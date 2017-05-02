@@ -1,18 +1,10 @@
 {
-    "name": "apimatic/tangocardraasv2api",
+    "name": "tangocard/raasv2",
     "type": "library",
     "description": "With this RESTful API you can integrate a global reward or incentive program into your app or platform. If you have any questions or if you'd like to receive your own credentials, please contact us at devsupport@tangocard.com.",
     "keywords": ["Tango Card RaaS v2 API","API","SDK"],
-    "homepage": "https://apimatic.io",
-    "license": "MIT",
-    "authors": [
-        {
-            "name": "Mehdi Jaffery",
-            "email": "mehdi.jaffery@apimatic.io",
-            "homepage": "https://github.com/apimatic",
-            "role": "Developer"
-        }
-    ],
+    "homepage": "https://tangocard.com",
+    "license": "Apache-2.0",
     "require": {
         "php": ">=5.4.0",
         "ext-curl": "*",
