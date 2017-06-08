@@ -79,6 +79,10 @@ class BaseController
             throw new Exceptions\RaasGenericException('Not Found', $_httpContext);
         }
 
+        if ($response->getStatusCode() == 409) {
+            throw new Exceptions\RaasClientException('Conflict', $_httpContext);
+        }
+
         if ($response->getStatusCode() == 500) {
             throw new Exceptions\RaasServerException('Internal Server Error - Retry Later', $_httpContext);
         }

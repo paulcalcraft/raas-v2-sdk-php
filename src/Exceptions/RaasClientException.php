@@ -53,7 +53,7 @@ class RaasClientException extends APIException
     /**
  * An array of errors
      * @required
-     * @var RaasClientErrorModel[] $errors public property
+     * @var \RaasLib\Models\RaasClientErrorModel[] $errors public property
      */
     public $errors;
 
