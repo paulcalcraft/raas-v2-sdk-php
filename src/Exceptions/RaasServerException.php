@@ -25,7 +25,7 @@ class RaasServerException extends APIException
     /**
  * Request ID
      * @required
-     * @var uuid|string $requestId public property
+     * @var string $requestId public property
      */
     public $requestId;
 
