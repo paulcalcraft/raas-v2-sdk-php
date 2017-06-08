@@ -1,19 +1,19 @@
 <?php
 /*
- * RaaSV2
+ * Raas
  *
  * This file was automatically generated for Tango Card, Inc. by APIMATIC v2.0 ( https://apimatic.io ).
  */
 
-namespace RaaSV2Lib\Exceptions;
+namespace RaasLib\Exceptions;
 
-use RaaSV2Lib\APIException;
-use RaaSV2Lib\APIHelper;
+use RaasLib\APIException;
+use RaasLib\APIHelper;
 
 /**
- * RaaS API 5xx Exception
+ * RaaS API 4xx Exception
  */
-class RaaS5xxException extends APIException
+class RaasClientException extends APIException
 {
     /**
  * Request timestamp
@@ -53,7 +53,7 @@ class RaaS5xxException extends APIException
     /**
  * An array of errors
      * @required
-     * @var RaaS5xxErrorModel[] $errors public property
+     * @var RaasClientErrorModel[] $errors public property
      */
     public $errors;
 

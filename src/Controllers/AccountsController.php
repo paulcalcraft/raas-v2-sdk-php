@@ -1,22 +1,22 @@
 <?php
 /*
- * RaaSV2
+ * Raas
  *
  * This file was automatically generated for Tango Card, Inc. by APIMATIC v2.0 ( https://apimatic.io ).
  */
 
-namespace RaaSV2Lib\Controllers;
+namespace RaasLib\Controllers;
 
-use RaaSV2Lib\APIException;
-use RaaSV2Lib\APIHelper;
-use RaaSV2Lib\Configuration;
-use RaaSV2Lib\Models;
-use RaaSV2Lib\Exceptions;
-use RaaSV2Lib\Http\HttpRequest;
-use RaaSV2Lib\Http\HttpResponse;
-use RaaSV2Lib\Http\HttpMethod;
-use RaaSV2Lib\Http\HttpContext;
-use RaaSV2Lib\Servers;
+use RaasLib\APIException;
+use RaasLib\APIHelper;
+use RaasLib\Configuration;
+use RaasLib\Models;
+use RaasLib\Exceptions;
+use RaasLib\Http\HttpRequest;
+use RaasLib\Http\HttpResponse;
+use RaasLib\Http\HttpMethod;
+use RaasLib\Http\HttpContext;
+use RaasLib\Servers;
 use Unirest\Request;
 
 /**
@@ -103,7 +103,7 @@ class AccountsController extends BaseController
 
         $mapper = $this->getJsonMapper();
 
-        return $mapper->mapClassArray($response->body, 'RaaSV2Lib\\Models\\AccountSummaryModel');
+        return $mapper->mapClassArray($response->body, 'RaasLib\\Models\\AccountSummaryModel');
     }
 
     /**
@@ -167,7 +167,7 @@ class AccountsController extends BaseController
 
         $mapper = $this->getJsonMapper();
 
-        return $mapper->mapClass($response->body, 'RaaSV2Lib\\Models\\AccountModel');
+        return $mapper->mapClass($response->body, 'RaasLib\\Models\\AccountModel');
     }
 
     /**
@@ -234,7 +234,7 @@ class AccountsController extends BaseController
 
         $mapper = $this->getJsonMapper();
 
-        return $mapper->mapClass($response->body, 'RaaSV2Lib\\Models\\AccountModel');
+        return $mapper->mapClass($response->body, 'RaasLib\\Models\\AccountModel');
     }
 
     /**
@@ -286,6 +286,6 @@ class AccountsController extends BaseController
 
         $mapper = $this->getJsonMapper();
 
-        return $mapper->mapClassArray($response->body, 'RaaSV2Lib\\Models\\AccountModel');
+        return $mapper->mapClassArray($response->body, 'RaasLib\\Models\\AccountModel');
     }
 }

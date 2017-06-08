@@ -1,11 +1,11 @@
 <?php
 /*
- * RaaSV2
+ * Raas
  *
  * This file was automatically generated for Tango Card, Inc. by APIMATIC v2.0 ( https://apimatic.io ).
  */
 
-namespace RaaSV2Lib;
+namespace RaasLib;
 
 use Exception;
 

@@ -1,18 +1,18 @@
 <?php
 /*
- * RaaSV2
+ * Raas
  *
  * This file was automatically generated for Tango Card, Inc. by APIMATIC v2.0 ( https://apimatic.io ).
  */
 
-namespace RaaSV2Lib\Models;
+namespace RaasLib\Models;
 
 use JsonSerializable;
 
 /**
  * RaaS 5xx Error
  */
-class RaaS5xxErrorModel implements JsonSerializable
+class RaasServerErrorModel implements JsonSerializable
 {
     /**
      * Error Message

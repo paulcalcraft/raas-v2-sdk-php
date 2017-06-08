@@ -1,17 +1,17 @@
 <?php
 /*
- * RaaSV2
+ * Raas
  *
  * This file was automatically generated for Tango Card, Inc. by APIMATIC v2.0 ( https://apimatic.io ).
  */
 
-namespace RaaSV2Lib\Controllers;
+namespace RaasLib\Controllers;
 
-use RaaSV2Lib\Http\HttpCallBack;
-use RaaSV2Lib\Http\HttpContext;
-use RaaSV2Lib\Http\HttpResponse;
-use RaaSV2Lib\APIException;
-use RaaSV2Lib\Exceptions;
+use RaasLib\Http\HttpCallBack;
+use RaasLib\Http\HttpContext;
+use RaasLib\Http\HttpResponse;
+use RaasLib\APIException;
+use RaasLib\Exceptions;
 use \apimatic\jsonmapper\JsonMapper;
 use Unirest\Request;
 
@@ -64,31 +64,31 @@ class BaseController
     protected function validateResponse(HttpResponse $response, HttpContext $_httpContext)
     {
         if ($response->getStatusCode() == 400) {
-            throw new Exceptions\RaaS4xxException('Bad Request', $_httpContext);
+            throw new Exceptions\RaasClientException('Bad Request', $_httpContext);
         }
 
         if ($response->getStatusCode() == 401) {
-            throw new Exceptions\RaaSGenericException('Unauthorized - Invalid Credentials', $_httpContext);
+            throw new Exceptions\RaasGenericException('Unauthorized - Invalid Credentials', $_httpContext);
         }
 
         if ($response->getStatusCode() == 403) {
-            throw new Exceptions\RaaS4xxException('Forbidden', $_httpContext);
+            throw new Exceptions\RaasClientException('Forbidden', $_httpContext);
         }
 
         if ($response->getStatusCode() == 404) {
-            throw new Exceptions\RaaSGenericException('Not Found', $_httpContext);
+            throw new Exceptions\RaasGenericException('Not Found', $_httpContext);
         }
 
         if ($response->getStatusCode() == 500) {
-            throw new Exceptions\RaaS5xxException('Internal Server Error - Retry Later', $_httpContext);
+            throw new Exceptions\RaasServerException('Internal Server Error - Retry Later', $_httpContext);
         }
 
         if ($response->getStatusCode() == 503) {
-            throw new Exceptions\RaaS5xxException('Service Unavailable - Retry Later', $_httpContext);
+            throw new Exceptions\RaasServerException('Service Unavailable - Retry Later', $_httpContext);
         }
 
         if (($response->getStatusCode() < 200) || ($response->getStatusCode() > 208)) { //[200,208] = HTTP OK
-            throw new Exceptions\RaaSGenericException('API Error', $_httpContext);
+            throw new Exceptions\RaasGenericException('API Error', $_httpContext);
         }
     }
 }

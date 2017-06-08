@@ -12,7 +12,7 @@ curl -sS https://getcomposer.org/installer | php
 Next, run the Composer command to install the latest stable version of our SDK:
 
 ```bash
-php composer.phar require tangocard/raasv2
+php composer.phar require tangocard/raas
 ```
 
 After installing, you need to require Composer's autoloader:
@@ -37,7 +37,7 @@ Open command prompt and type ```composer --version```. This should display the c
 * Using command line, navigate to the directory containing the generated files (including ```composer.json```) for the SDK. 
 * Run the command ```composer install```. This should install all the required dependencies and create the ```vendor``` directory in your project directory.
 
-![Building SDK - Step 1](https://apidocs.io/illustration/php?step=installDependencies&workspaceFolder=RaaSV2-PHP)
+![Building SDK - Step 1](https://apidocs.io/illustration/php?step=installDependencies&workspaceFolder=Raas-PHP)
 
 ### [For Windows Users Only] Configuring CURL Certificate Path in php.ini
 
@@ -55,35 +55,35 @@ CURL used to include a list of accepted CAs, but no longer bundles ANY CA certs.
 
 ## How to Use
 
-The following section explains how to use the RaaSV2 library in a new project.
+The following section explains how to use the Raas library in a new project.
 
 ### 1. Open Project in an IDE
 
 Open an IDE for PHP like PhpStorm. The basic workflow presented here is also applicable if you prefer using a different editor or IDE.
 
-![Open project in PHPStorm - Step 1](https://apidocs.io/illustration/php?step=openIDE&workspaceFolder=RaaSV2-PHP)
+![Open project in PHPStorm - Step 1](https://apidocs.io/illustration/php?step=openIDE&workspaceFolder=Raas-PHP)
 
 Click on ```Open``` in PhpStorm to browse to your generated SDK directory and then click ```OK```.
 
-![Open project in PHPStorm - Step 2](https://apidocs.io/illustration/php?step=openProject0&workspaceFolder=RaaSV2-PHP)     
+![Open project in PHPStorm - Step 2](https://apidocs.io/illustration/php?step=openProject0&workspaceFolder=Raas-PHP)     
 
 ### 2. Add a new Test Project
 
 Create a new directory by right clicking on the solution name as shown below:
 
-![Add a new project in PHPStorm - Step 1](https://apidocs.io/illustration/php?step=createDirectory&workspaceFolder=RaaSV2-PHP)
+![Add a new project in PHPStorm - Step 1](https://apidocs.io/illustration/php?step=createDirectory&workspaceFolder=Raas-PHP)
 
 Name the directory as "test"
 
-![Add a new project in PHPStorm - Step 2](https://apidocs.io/illustration/php?step=nameDirectory&workspaceFolder=RaaSV2-PHP)
+![Add a new project in PHPStorm - Step 2](https://apidocs.io/illustration/php?step=nameDirectory&workspaceFolder=Raas-PHP)
    
 Add a PHP file to this project
 
-![Add a new project in PHPStorm - Step 3](https://apidocs.io/illustration/php?step=createFile&workspaceFolder=RaaSV2-PHP)
+![Add a new project in PHPStorm - Step 3](https://apidocs.io/illustration/php?step=createFile&workspaceFolder=Raas-PHP)
 
 Name it "testSDK"
 
-![Add a new project in PHPStorm - Step 4](https://apidocs.io/illustration/php?step=nameFile&workspaceFolder=RaaSV2-PHP)
+![Add a new project in PHPStorm - Step 4](https://apidocs.io/illustration/php?step=nameFile&workspaceFolder=Raas-PHP)
 
 Depending on your project setup, you might need to include composer's autoloader in your PHP code to enable auto loading of classes.
 
@@ -93,7 +93,7 @@ require_once "../vendor/autoload.php";
 
 It is important that the path inside require_once correctly points to the file ```autoload.php``` inside the vendor directory created during dependency installations.
 
-![Add a new project in PHPStorm - Step 4](https://apidocs.io/illustration/php?step=projectFiles&workspaceFolder=RaaSV2-PHP)
+![Add a new project in PHPStorm - Step 4](https://apidocs.io/illustration/php?step=projectFiles&workspaceFolder=Raas-PHP)
 
 After this you can add code to initialize the client library and acquire the instance of a Controller class. Sample code to initialize the client library and using controller methods is given in the subsequent sections.
 
@@ -103,23 +103,23 @@ To run your project you must set the Interpreter for your project. Interpreter i
 
 Open ```Settings``` from ```File``` menu.
 
-![Run Test Project - Step 1](https://apidocs.io/illustration/php?step=openSettings&workspaceFolder=RaaSV2-PHP)
+![Run Test Project - Step 1](https://apidocs.io/illustration/php?step=openSettings&workspaceFolder=Raas-PHP)
 
 Select ```PHP``` from within ```Languages & Frameworks```
 
-![Run Test Project - Step 2](https://apidocs.io/illustration/php?step=setInterpreter0&workspaceFolder=RaaSV2-PHP)
+![Run Test Project - Step 2](https://apidocs.io/illustration/php?step=setInterpreter0&workspaceFolder=Raas-PHP)
 
 Browse for Interpreters near the ```Interpreter``` option and choose your interpreter.
 
-![Run Test Project - Step 3](https://apidocs.io/illustration/php?step=setInterpreter1&workspaceFolder=RaaSV2-PHP)
+![Run Test Project - Step 3](https://apidocs.io/illustration/php?step=setInterpreter1&workspaceFolder=Raas-PHP)
 
 Once the interpreter is selected, click ```OK```
 
-![Run Test Project - Step 4](https://apidocs.io/illustration/php?step=setInterpreter2&workspaceFolder=RaaSV2-PHP)
+![Run Test Project - Step 4](https://apidocs.io/illustration/php?step=setInterpreter2&workspaceFolder=Raas-PHP)
 
 To run your project, right click on your PHP file inside your Test project and click on ```Run```
 
-![Run Test Project - Step 5](https://apidocs.io/illustration/php?step=runProject&workspaceFolder=RaaSV2-PHP)
+![Run Test Project - Step 5](https://apidocs.io/illustration/php?step=runProject&workspaceFolder=Raas-PHP)
 
 ## How to Test
 
@@ -150,12 +150,12 @@ API client can be initialized as following.
 $platformName = "QAPlatform2"; // RaaS v2 API Platform Name
 $platformKey = "apYPfT6HNONpDRUj3CLGWYt7gvIHONpDRUYPfT6Hj"; // RaaS v2 API Platform Key
 
-$client = new RaaSV2Lib\RaaSV2Client($platformName, $platformKey);
+$client = new RaasLib\RaasClient($platformName, $platformKey);
 ```
 
-## Class Reference
+# Class Reference
 
-### <a name="list_of_controllers"></a>List of Controllers
+## <a name="list_of_controllers"></a>List of Controllers
 
 * [AccountsController](#accounts_controller)
 * [OrdersController](#orders_controller)
@@ -164,9 +164,9 @@ $client = new RaaSV2Lib\RaaSV2Client($platformName, $platformKey);
 * [StatusController](#status_controller)
 * [CustomersController](#customers_controller)
 
-### <a name="accounts_controller"></a>![Class: ](https://apidocs.io/img/class.png ".AccountsController") AccountsController
+## <a name="accounts_controller"></a>![Class: ](https://apidocs.io/img/class.png ".AccountsController") AccountsController
 
-#### Get singleton instance
+### Get singleton instance
 
 The singleton instance of the ``` AccountsController ``` class can be accessed from the API Client.
 
@@ -174,7 +174,7 @@ The singleton instance of the ``` AccountsController ``` class can be accessed f
 $accounts = $client->getAccounts();
 ```
 
-#### <a name="get_accounts_by_customer"></a>![Method: ](https://apidocs.io/img/method.png ".AccountsController.getAccountsByCustomer") getAccountsByCustomer
+### <a name="get_accounts_by_customer"></a>![Method: ](https://apidocs.io/img/method.png ".AccountsController.getAccountsByCustomer") getAccountsByCustomer
 
 > Gets a list of accounts for a given customer
 
@@ -201,7 +201,7 @@ $result = $accounts->getAccountsByCustomer($customerIdentifier);
 ```
 
 
-#### <a name="get_account"></a>![Method: ](https://apidocs.io/img/method.png ".AccountsController.getAccount") getAccount
+### <a name="get_account"></a>![Method: ](https://apidocs.io/img/method.png ".AccountsController.getAccount") getAccount
 
 > Get an account
 
@@ -228,7 +228,7 @@ $result = $accounts->getAccount($accountIdentifier);
 ```
 
 
-#### <a name="create_account"></a>![Method: ](https://apidocs.io/img/method.png ".AccountsController.createAccount") createAccount
+### <a name="create_account"></a>![Method: ](https://apidocs.io/img/method.png ".AccountsController.createAccount") createAccount
 
 > Create an account under a given customer
 
@@ -259,7 +259,7 @@ $result = $accounts->createAccount($customerIdentifier, $body);
 ```
 
 
-#### <a name="get_all_accounts"></a>![Method: ](https://apidocs.io/img/method.png ".AccountsController.getAllAccounts") getAllAccounts
+### <a name="get_all_accounts"></a>![Method: ](https://apidocs.io/img/method.png ".AccountsController.getAllAccounts") getAllAccounts
 
 > Gets all accounts under the platform
 
@@ -279,9 +279,9 @@ $result = $accounts->getAllAccounts();
 
 [Back to List of Controllers](#list_of_controllers)
 
-### <a name="orders_controller"></a>![Class: ](https://apidocs.io/img/class.png ".OrdersController") OrdersController
+## <a name="orders_controller"></a>![Class: ](https://apidocs.io/img/class.png ".OrdersController") OrdersController
 
-#### Get singleton instance
+### Get singleton instance
 
 The singleton instance of the ``` OrdersController ``` class can be accessed from the API Client.
 
@@ -289,7 +289,7 @@ The singleton instance of the ``` OrdersController ``` class can be accessed fro
 $orders = $client->getOrders();
 ```
 
-#### <a name="create_order"></a>![Method: ](https://apidocs.io/img/method.png ".OrdersController.createOrder") createOrder
+### <a name="create_order"></a>![Method: ](https://apidocs.io/img/method.png ".OrdersController.createOrder") createOrder
 
 > TODO: Add a method description
 
@@ -316,7 +316,7 @@ $result = $orders->createOrder($body);
 ```
 
 
-#### <a name="get_order"></a>![Method: ](https://apidocs.io/img/method.png ".OrdersController.getOrder") getOrder
+### <a name="get_order"></a>![Method: ](https://apidocs.io/img/method.png ".OrdersController.getOrder") getOrder
 
 > TODO: Add a method description
 
@@ -343,7 +343,7 @@ $result = $orders->getOrder($referenceOrderID);
 ```
 
 
-#### <a name="create_resend_order"></a>![Method: ](https://apidocs.io/img/method.png ".OrdersController.createResendOrder") createResendOrder
+### <a name="create_resend_order"></a>![Method: ](https://apidocs.io/img/method.png ".OrdersController.createResendOrder") createResendOrder
 
 > TODO: Add a method description
 
@@ -370,7 +370,7 @@ $result = $orders->createResendOrder($referenceOrderID);
 ```
 
 
-#### <a name="get_orders"></a>![Method: ](https://apidocs.io/img/method.png ".OrdersController.getOrders") getOrders
+### <a name="get_orders"></a>![Method: ](https://apidocs.io/img/method.png ".OrdersController.getOrders") getOrders
 
 > TODO: Add a method description
 
@@ -411,10 +411,10 @@ $collect['startDate'] = $startDate;
 $endDate = date("D M d, Y G:i");
 $collect['endDate'] = $endDate;
 
-$elementsPerBlock = 134;
+$elementsPerBlock = 241;
 $collect['elementsPerBlock'] = $elementsPerBlock;
 
-$page = 134;
+$page = 241;
 $collect['page'] = $page;
 
 
@@ -425,9 +425,9 @@ $result = $orders->getOrders($collect);
 
 [Back to List of Controllers](#list_of_controllers)
 
-### <a name="catalog_controller"></a>![Class: ](https://apidocs.io/img/class.png ".CatalogController") CatalogController
+## <a name="catalog_controller"></a>![Class: ](https://apidocs.io/img/class.png ".CatalogController") CatalogController
 
-#### Get singleton instance
+### Get singleton instance
 
 The singleton instance of the ``` CatalogController ``` class can be accessed from the API Client.
 
@@ -435,7 +435,7 @@ The singleton instance of the ``` CatalogController ``` class can be accessed fr
 $catalog = $client->getCatalog();
 ```
 
-#### <a name="get_catalog"></a>![Method: ](https://apidocs.io/img/method.png ".CatalogController.getCatalog") getCatalog
+### <a name="get_catalog"></a>![Method: ](https://apidocs.io/img/method.png ".CatalogController.getCatalog") getCatalog
 
 > Get Catalog
 
@@ -455,9 +455,9 @@ $result = $catalog->getCatalog();
 
 [Back to List of Controllers](#list_of_controllers)
 
-### <a name="exchange_rates_controller"></a>![Class: ](https://apidocs.io/img/class.png ".ExchangeRatesController") ExchangeRatesController
+## <a name="exchange_rates_controller"></a>![Class: ](https://apidocs.io/img/class.png ".ExchangeRatesController") ExchangeRatesController
 
-#### Get singleton instance
+### Get singleton instance
 
 The singleton instance of the ``` ExchangeRatesController ``` class can be accessed from the API Client.
 
@@ -465,7 +465,7 @@ The singleton instance of the ``` ExchangeRatesController ``` class can be acces
 $exchangeRates = $client->getExchangeRates();
 ```
 
-#### <a name="get_exchange_rates"></a>![Method: ](https://apidocs.io/img/method.png ".ExchangeRatesController.getExchangeRates") getExchangeRates
+### <a name="get_exchange_rates"></a>![Method: ](https://apidocs.io/img/method.png ".ExchangeRatesController.getExchangeRates") getExchangeRates
 
 > Retrieve current exchange rates
 
@@ -485,9 +485,9 @@ $exchangeRates->getExchangeRates();
 
 [Back to List of Controllers](#list_of_controllers)
 
-### <a name="status_controller"></a>![Class: ](https://apidocs.io/img/class.png ".StatusController") StatusController
+## <a name="status_controller"></a>![Class: ](https://apidocs.io/img/class.png ".StatusController") StatusController
 
-#### Get singleton instance
+### Get singleton instance
 
 The singleton instance of the ``` StatusController ``` class can be accessed from the API Client.
 
@@ -495,7 +495,7 @@ The singleton instance of the ``` StatusController ``` class can be accessed fro
 $status = $client->getStatus();
 ```
 
-#### <a name="get_system_status"></a>![Method: ](https://apidocs.io/img/method.png ".StatusController.getSystemStatus") getSystemStatus
+### <a name="get_system_status"></a>![Method: ](https://apidocs.io/img/method.png ".StatusController.getSystemStatus") getSystemStatus
 
 > *Tags:*  ``` Skips Authentication ``` 
 
@@ -517,9 +517,9 @@ $result = $status->getSystemStatus();
 
 [Back to List of Controllers](#list_of_controllers)
 
-### <a name="customers_controller"></a>![Class: ](https://apidocs.io/img/class.png ".CustomersController") CustomersController
+## <a name="customers_controller"></a>![Class: ](https://apidocs.io/img/class.png ".CustomersController") CustomersController
 
-#### Get singleton instance
+### Get singleton instance
 
 The singleton instance of the ``` CustomersController ``` class can be accessed from the API Client.
 
@@ -527,7 +527,7 @@ The singleton instance of the ``` CustomersController ``` class can be accessed 
 $customers = $client->getCustomers();
 ```
 
-#### <a name="get_customer"></a>![Method: ](https://apidocs.io/img/method.png ".CustomersController.getCustomer") getCustomer
+### <a name="get_customer"></a>![Method: ](https://apidocs.io/img/method.png ".CustomersController.getCustomer") getCustomer
 
 > Get a customer
 
@@ -554,7 +554,7 @@ $result = $customers->getCustomer($customerIdentifier);
 ```
 
 
-#### <a name="create_customer"></a>![Method: ](https://apidocs.io/img/method.png ".CustomersController.createCustomer") createCustomer
+### <a name="create_customer"></a>![Method: ](https://apidocs.io/img/method.png ".CustomersController.createCustomer") createCustomer
 
 > Create a new customer
 
@@ -581,7 +581,7 @@ $result = $customers->createCustomer($body);
 ```
 
 
-#### <a name="get_all_customers"></a>![Method: ](https://apidocs.io/img/method.png ".CustomersController.getAllCustomers") getAllCustomers
+### <a name="get_all_customers"></a>![Method: ](https://apidocs.io/img/method.png ".CustomersController.getAllCustomers") getAllCustomers
 
 > Gets all customers under the platform
 
