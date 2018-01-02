@@ -25,6 +25,14 @@ class RaasClient
         Configuration::$platformKey = $platformKey ? $platformKey : Configuration::$platformKey;
     }
     /**
+     * Singleton access to Orders controller
+     * @return Controllers\OrdersController The *Singleton* instance
+     */
+    public function getOrders()
+    {
+        return Controllers\OrdersController::getInstance();
+    }
+    /**
      * Singleton access to Accounts controller
      * @return Controllers\AccountsController The *Singleton* instance
      */
@@ -41,22 +49,6 @@ class RaasClient
         return Controllers\CatalogController::getInstance();
     }
     /**
-     * Singleton access to Orders controller
-     * @return Controllers\OrdersController The *Singleton* instance
-     */
-    public function getOrders()
-    {
-        return Controllers\OrdersController::getInstance();
-    }
-    /**
-     * Singleton access to Customers controller
-     * @return Controllers\CustomersController The *Singleton* instance
-     */
-    public function getCustomers()
-    {
-        return Controllers\CustomersController::getInstance();
-    }
-    /**
      * Singleton access to ExchangeRates controller
      * @return Controllers\ExchangeRatesController The *Singleton* instance
      */
@@ -71,6 +63,14 @@ class RaasClient
     public function getStatus()
     {
         return Controllers\StatusController::getInstance();
+    }
+    /**
+     * Singleton access to Customers controller
+     * @return Controllers\CustomersController The *Singleton* instance
+     */
+    public function getCustomers()
+    {
+        return Controllers\CustomersController::getInstance();
     }
     /**
      * Singleton access to Fund controller

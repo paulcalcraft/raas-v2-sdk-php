@@ -8,6 +8,7 @@
 namespace RaasLib\Models;
 
 use JsonSerializable;
+use RaasLib\Utils\DateTimeHelper;
 
 /**
  * Exchange Rate Model
@@ -17,7 +18,8 @@ class ExchangeRateModel implements JsonSerializable
     /**
      * Last Modified
      * @required
-     * @var string $lastModifiedDate public property
+     * @factory \Raas\Utils\DateTimeHelper::fromRfc3339DateTime
+     * @var \DateTime $lastModifiedDate public property
      */
     public $lastModifiedDate;
 
@@ -44,10 +46,10 @@ class ExchangeRateModel implements JsonSerializable
 
     /**
      * Constructor to set initial or default values of member properties
-     * @param string $lastModifiedDate Initialization value for $this->lastModifiedDate
-     * @param string $rewardCurrency   Initialization value for $this->rewardCurrency
-     * @param string $baseCurrency     Initialization value for $this->baseCurrency
-     * @param double $baseFx           Initialization value for $this->baseFx
+     * @param \DateTime $lastModifiedDate Initialization value for $this->lastModifiedDate
+     * @param string    $rewardCurrency   Initialization value for $this->rewardCurrency
+     * @param string    $baseCurrency     Initialization value for $this->baseCurrency
+     * @param double    $baseFx           Initialization value for $this->baseFx
      */
     public function __construct()
     {
@@ -66,7 +68,7 @@ class ExchangeRateModel implements JsonSerializable
     public function jsonSerialize()
     {
         $json = array();
-        $json['lastModifiedDate'] = $this->lastModifiedDate;
+        $json['lastModifiedDate'] = DateTimeHelper::toRfc3339DateTime($this->lastModifiedDate);
         $json['rewardCurrency']   = $this->rewardCurrency;
         $json['baseCurrency']     = $this->baseCurrency;
         $json['baseFx']           = $this->baseFx;

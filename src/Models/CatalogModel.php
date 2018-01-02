@@ -24,7 +24,7 @@ class CatalogModel implements JsonSerializable
     /**
      * The brands in your catalog
      * @required
-     * @var BrandModel[] $brands public property
+     * @var \RaasLib\Models\BrandModel[] $brands public property
      */
     public $brands;
 

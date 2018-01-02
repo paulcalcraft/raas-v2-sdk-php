@@ -8,6 +8,7 @@
 namespace RaasLib\Models;
 
 use JsonSerializable;
+use RaasLib\Utils\DateTimeHelper;
 
 /**
  * Order Model
@@ -24,14 +25,15 @@ class OrderModel implements JsonSerializable
     /**
      * Amount Charged
      * @required
-     * @var CurrencyBreakdownModel $amountCharged public property
+     * @var \RaasLib\Models\CurrencyBreakdownModel $amountCharged public property
      */
     public $amountCharged;
 
     /**
      * Created At
      * @required
-     * @var string $createdAt public property
+     * @factory \Raas\Utils\DateTimeHelper::fromRfc3339DateTime
+     * @var \DateTime $createdAt public property
      */
     public $createdAt;
 
@@ -45,7 +47,7 @@ class OrderModel implements JsonSerializable
     /**
      * Denomination
      * @required
-     * @var CurrencyBreakdownModel $denomination public property
+     * @var \RaasLib\Models\CurrencyBreakdownModel $denomination public property
      */
     public $denomination;
 
@@ -59,7 +61,7 @@ class OrderModel implements JsonSerializable
     /**
      * Reward
      * @required
-     * @var RewardModel $reward public property
+     * @var \RaasLib\Models\RewardModel $reward public property
      */
     public $reward;
 
@@ -123,36 +125,36 @@ class OrderModel implements JsonSerializable
 
     /**
      * Recipient
-     * @var NameEmailModel|null $recipient public property
+     * @var \RaasLib\Models\NameEmailModel|null $recipient public property
      */
     public $recipient;
 
     /**
      * Sender
-     * @var NameEmailModel|null $sender public property
+     * @var \RaasLib\Models\NameEmailModel|null $sender public property
      */
     public $sender;
 
     /**
      * Constructor to set initial or default values of member properties
-     * @param string                 $accountIdentifier  Initialization value for $this->accountIdentifier
-     * @param CurrencyBreakdownModel $amountCharged      Initialization value for $this->amountCharged
-     * @param string                 $createdAt          Initialization value for $this->createdAt
-     * @param string                 $customerIdentifier Initialization value for $this->customerIdentifier
-     * @param CurrencyBreakdownModel $denomination       Initialization value for $this->denomination
-     * @param string                 $referenceOrderID   Initialization value for $this->referenceOrderID
-     * @param RewardModel            $reward             Initialization value for $this->reward
-     * @param string                 $rewardName         Initialization value for $this->rewardName
-     * @param bool                   $sendEmail          Initialization value for $this->sendEmail
-     * @param string                 $status             Initialization value for $this->status
-     * @param string                 $utid               Initialization value for $this->utid
-     * @param string                 $campaign           Initialization value for $this->campaign
-     * @param string                 $emailSubject       Initialization value for $this->emailSubject
-     * @param string                 $externalRefID      Initialization value for $this->externalRefID
-     * @param string                 $message            Initialization value for $this->message
-     * @param string                 $notes              Initialization value for $this->notes
-     * @param NameEmailModel         $recipient          Initialization value for $this->recipient
-     * @param NameEmailModel         $sender             Initialization value for $this->sender
+     * @param string                  $accountIdentifier  Initialization value for $this->accountIdentifier
+     * @param CurrencyBreakdownModel  $amountCharged      Initialization value for $this->amountCharged
+     * @param \DateTime               $createdAt          Initialization value for $this->createdAt
+     * @param string                  $customerIdentifier Initialization value for $this->customerIdentifier
+     * @param CurrencyBreakdownModel  $denomination       Initialization value for $this->denomination
+     * @param string                  $referenceOrderID   Initialization value for $this->referenceOrderID
+     * @param RewardModel             $reward             Initialization value for $this->reward
+     * @param string                  $rewardName         Initialization value for $this->rewardName
+     * @param bool                    $sendEmail          Initialization value for $this->sendEmail
+     * @param string                  $status             Initialization value for $this->status
+     * @param string                  $utid               Initialization value for $this->utid
+     * @param string                  $campaign           Initialization value for $this->campaign
+     * @param string                  $emailSubject       Initialization value for $this->emailSubject
+     * @param string                  $externalRefID      Initialization value for $this->externalRefID
+     * @param string                  $message            Initialization value for $this->message
+     * @param string                  $notes              Initialization value for $this->notes
+     * @param NameEmailModel          $recipient          Initialization value for $this->recipient
+     * @param NameEmailModel          $sender             Initialization value for $this->sender
      */
     public function __construct()
     {
@@ -187,7 +189,7 @@ class OrderModel implements JsonSerializable
         $json = array();
         $json['accountIdentifier']  = $this->accountIdentifier;
         $json['amountCharged']      = $this->amountCharged;
-        $json['createdAt']          = $this->createdAt;
+        $json['createdAt']          = DateTimeHelper::toRfc3339DateTime($this->createdAt);
         $json['customerIdentifier'] = $this->customerIdentifier;
         $json['denomination']       = $this->denomination;
         $json['referenceOrderID']   = $this->referenceOrderID;

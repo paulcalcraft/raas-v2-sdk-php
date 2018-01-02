@@ -8,6 +8,7 @@
 namespace RaasLib\Models;
 
 use JsonSerializable;
+use RaasLib\Utils\DateTimeHelper;
 
 /**
  * Unregister Credit Card Response
@@ -17,7 +18,8 @@ class UnregisterCreditCardResponseModel implements JsonSerializable
     /**
      * @todo Write general description for this property
      * @required
-     * @var string $createdDate public property
+     * @factory \Raas\Utils\DateTimeHelper::fromRfc3339DateTime
+     * @var \DateTime $createdDate public property
      */
     public $createdDate;
 
@@ -37,9 +39,9 @@ class UnregisterCreditCardResponseModel implements JsonSerializable
 
     /**
      * Constructor to set initial or default values of member properties
-     * @param string $createdDate Initialization value for $this->createdDate
-     * @param string $message     Initialization value for $this->message
-     * @param string $token       Initialization value for $this->token
+     * @param \DateTime $createdDate Initialization value for $this->createdDate
+     * @param string    $message     Initialization value for $this->message
+     * @param string    $token       Initialization value for $this->token
      */
     public function __construct()
     {
@@ -57,7 +59,7 @@ class UnregisterCreditCardResponseModel implements JsonSerializable
     public function jsonSerialize()
     {
         $json = array();
-        $json['createdDate'] = $this->createdDate;
+        $json['createdDate'] = DateTimeHelper::toRfc3339DateTime($this->createdDate);
         $json['message']     = $this->message;
         $json['token']       = $this->token;
 

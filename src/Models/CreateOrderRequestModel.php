@@ -75,13 +75,13 @@ class CreateOrderRequestModel implements JsonSerializable
 
     /**
      * Recipient
-     * @var NameEmailModel|null $recipient public property
+     * @var \RaasLib\Models\NameEmailModel|null $recipient public property
      */
     public $recipient;
 
     /**
      * Sender
-     * @var NameEmailModel|null $sender public property
+     * @var \RaasLib\Models\NameEmailModel|null $sender public property
      */
     public $sender;
 

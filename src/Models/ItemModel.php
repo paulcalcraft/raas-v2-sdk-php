@@ -8,6 +8,7 @@
 namespace RaasLib\Models;
 
 use JsonSerializable;
+use RaasLib\Utils\DateTimeHelper;
 
 /**
  * Item Model
@@ -59,14 +60,16 @@ class ItemModel implements JsonSerializable
     /**
      * Date Created
      * @required
-     * @var string $createdDate public property
+     * @factory \Raas\Utils\DateTimeHelper::fromRfc3339DateTime
+     * @var \DateTime $createdDate public property
      */
     public $createdDate;
 
     /**
      * Last Updated
      * @required
-     * @var string $lastUpdateDate public property
+     * @factory \Raas\Utils\DateTimeHelper::fromRfc3339DateTime
+     * @var \DateTime $lastUpdateDate public property
      */
     public $lastUpdateDate;
 
@@ -97,18 +100,18 @@ class ItemModel implements JsonSerializable
 
     /**
      * Constructor to set initial or default values of member properties
-     * @param string $utid           Initialization value for $this->utid
-     * @param string $rewardName     Initialization value for $this->rewardName
-     * @param string $currencyCode   Initialization value for $this->currencyCode
-     * @param string $status         Initialization value for $this->status
-     * @param string $valueType      Initialization value for $this->valueType
-     * @param string $rewardType     Initialization value for $this->rewardType
-     * @param string $createdDate    Initialization value for $this->createdDate
-     * @param string $lastUpdateDate Initialization value for $this->lastUpdateDate
-     * @param array  $countries      Initialization value for $this->countries
-     * @param double $minValue       Initialization value for $this->minValue
-     * @param double $maxValue       Initialization value for $this->maxValue
-     * @param double $faceValue      Initialization value for $this->faceValue
+     * @param string    $utid           Initialization value for $this->utid
+     * @param string    $rewardName     Initialization value for $this->rewardName
+     * @param string    $currencyCode   Initialization value for $this->currencyCode
+     * @param string    $status         Initialization value for $this->status
+     * @param string    $valueType      Initialization value for $this->valueType
+     * @param string    $rewardType     Initialization value for $this->rewardType
+     * @param \DateTime $createdDate    Initialization value for $this->createdDate
+     * @param \DateTime $lastUpdateDate Initialization value for $this->lastUpdateDate
+     * @param array     $countries      Initialization value for $this->countries
+     * @param double    $minValue       Initialization value for $this->minValue
+     * @param double    $maxValue       Initialization value for $this->maxValue
+     * @param double    $faceValue      Initialization value for $this->faceValue
      */
     public function __construct()
     {
@@ -141,8 +144,8 @@ class ItemModel implements JsonSerializable
         $json['status']         = $this->status;
         $json['valueType']      = $this->valueType;
         $json['rewardType']     = $this->rewardType;
-        $json['createdDate']    = $this->createdDate;
-        $json['lastUpdateDate'] = $this->lastUpdateDate;
+        $json['createdDate']    = DateTimeHelper::toRfc3339DateTime($this->createdDate);
+        $json['lastUpdateDate'] = DateTimeHelper::toRfc3339DateTime($this->lastUpdateDate);
         $json['countries']      = $this->countries;
         $json['minValue']       = $this->minValue;
         $json['maxValue']       = $this->maxValue;

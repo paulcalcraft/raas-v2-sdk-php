@@ -8,6 +8,7 @@
 namespace RaasLib\Models;
 
 use JsonSerializable;
+use RaasLib\Utils\DateTimeHelper;
 
 /**
  * Account Model
@@ -45,7 +46,8 @@ class AccountModel implements JsonSerializable
     /**
      * Date Created
      * @required
-     * @var string $createdAt public property
+     * @factory \Raas\Utils\DateTimeHelper::fromRfc3339DateTime
+     * @var \DateTime $createdAt public property
      */
     public $createdAt;
 
@@ -64,13 +66,13 @@ class AccountModel implements JsonSerializable
 
     /**
      * Constructor to set initial or default values of member properties
-     * @param string $accountIdentifier Initialization value for $this->accountIdentifier
-     * @param string $displayName       Initialization value for $this->displayName
-     * @param string $currencyCode      Initialization value for $this->currencyCode
-     * @param double $currentBalance    Initialization value for $this->currentBalance
-     * @param string $createdAt         Initialization value for $this->createdAt
-     * @param string $status            Initialization value for $this->status
-     * @param string $contactEmail      Initialization value for $this->contactEmail
+     * @param string    $accountIdentifier Initialization value for $this->accountIdentifier
+     * @param string    $displayName       Initialization value for $this->displayName
+     * @param string    $currencyCode      Initialization value for $this->currencyCode
+     * @param double    $currentBalance    Initialization value for $this->currentBalance
+     * @param \DateTime $createdAt         Initialization value for $this->createdAt
+     * @param string    $status            Initialization value for $this->status
+     * @param string    $contactEmail      Initialization value for $this->contactEmail
      */
     public function __construct()
     {
@@ -102,7 +104,7 @@ class AccountModel implements JsonSerializable
         $json['displayName']       = $this->displayName;
         $json['currencyCode']      = $this->currencyCode;
         $json['currentBalance']    = $this->currentBalance;
-        $json['createdAt']         = $this->createdAt;
+        $json['createdAt']         = DateTimeHelper::toRfc3339DateTime($this->createdAt);
         $json['status']            = $this->status;
         $json['contactEmail']      = $this->contactEmail;
 

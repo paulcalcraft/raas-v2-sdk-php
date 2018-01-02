@@ -8,6 +8,7 @@
 namespace RaasLib\Models;
 
 use JsonSerializable;
+use RaasLib\Utils\DateTimeHelper;
 
 /**
  * Response for Resend Order Call
@@ -17,7 +18,8 @@ class ResendOrderResponseModel implements JsonSerializable
     /**
      * When the resend request was created
      * @required
-     * @var string $createdAt public property
+     * @factory \Raas\Utils\DateTimeHelper::fromRfc3339DateTime
+     * @var \DateTime $createdAt public property
      */
     public $createdAt;
 
@@ -30,8 +32,8 @@ class ResendOrderResponseModel implements JsonSerializable
 
     /**
      * Constructor to set initial or default values of member properties
-     * @param string  $createdAt Initialization value for $this->createdAt
-     * @param integer $id        Initialization value for $this->id
+     * @param \DateTime $createdAt Initialization value for $this->createdAt
+     * @param integer   $id        Initialization value for $this->id
      */
     public function __construct()
     {
@@ -48,7 +50,7 @@ class ResendOrderResponseModel implements JsonSerializable
     public function jsonSerialize()
     {
         $json = array();
-        $json['createdAt'] = $this->createdAt;
+        $json['createdAt'] = DateTimeHelper::toRfc3339DateTime($this->createdAt);
         $json['id']        = $this->id;
 
         return $json;

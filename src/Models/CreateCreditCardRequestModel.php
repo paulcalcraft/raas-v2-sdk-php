@@ -45,14 +45,14 @@ class CreateCreditCardRequestModel implements JsonSerializable
     /**
      * @todo Write general description for this property
      * @required
-     * @var NewCreditCardModel $creditCard public property
+     * @var \RaasLib\Models\NewCreditCardModel $creditCard public property
      */
     public $creditCard;
 
     /**
      * @todo Write general description for this property
      * @required
-     * @var BillingAddressModel $billingAddress public property
+     * @var \RaasLib\Models\BillingAddressModel $billingAddress public property
      */
     public $billingAddress;
 

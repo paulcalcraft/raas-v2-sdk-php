@@ -8,6 +8,7 @@
 namespace RaasLib\Models;
 
 use JsonSerializable;
+use RaasLib\Utils\DateTimeHelper;
 
 /**
  * Fund Account Response
@@ -31,7 +32,8 @@ class DepositResponseModel implements JsonSerializable
     /**
      * @todo Write general description for this property
      * @required
-     * @var string $createdDate public property
+     * @factory \Raas\Utils\DateTimeHelper::fromRfc3339DateTime
+     * @var \DateTime $createdDate public property
      */
     public $createdDate;
 
@@ -58,12 +60,12 @@ class DepositResponseModel implements JsonSerializable
 
     /**
      * Constructor to set initial or default values of member properties
-     * @param double $amount             Initialization value for $this->amount
-     * @param double $amountCharged      Initialization value for $this->amountCharged
-     * @param string $createdDate        Initialization value for $this->createdDate
-     * @param double $feePercent         Initialization value for $this->feePercent
-     * @param string $referenceDepositID Initialization value for $this->referenceDepositID
-     * @param string $status             Initialization value for $this->status
+     * @param double    $amount             Initialization value for $this->amount
+     * @param double    $amountCharged      Initialization value for $this->amountCharged
+     * @param \DateTime $createdDate        Initialization value for $this->createdDate
+     * @param double    $feePercent         Initialization value for $this->feePercent
+     * @param string    $referenceDepositID Initialization value for $this->referenceDepositID
+     * @param string    $status             Initialization value for $this->status
      */
     public function __construct()
     {
@@ -86,7 +88,7 @@ class DepositResponseModel implements JsonSerializable
         $json = array();
         $json['amount']             = $this->amount;
         $json['amountCharged']      = $this->amountCharged;
-        $json['createdDate']        = $this->createdDate;
+        $json['createdDate']        = DateTimeHelper::toRfc3339DateTime($this->createdDate);
         $json['feePercent']         = $this->feePercent;
         $json['referenceDepositID'] = $this->referenceDepositID;
         $json['status']             = $this->status;

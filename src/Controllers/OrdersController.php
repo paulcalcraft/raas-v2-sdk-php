@@ -12,6 +12,7 @@ use RaasLib\APIHelper;
 use RaasLib\Configuration;
 use RaasLib\Models;
 use RaasLib\Exceptions;
+use RaasLib\Utils\DateTimeHelper;
 use RaasLib\Http\HttpRequest;
 use RaasLib\Http\HttpResponse;
 use RaasLib\Http\HttpMethod;
@@ -40,6 +41,66 @@ class OrdersController extends BaseController
         }
         
         return static::$instance;
+    }
+
+    /**
+     * @todo Add general description for this endpoint
+     *
+     * @param Models\CreateOrderRequestModel $body TODO: type description here
+     * @return mixed response from the API call
+     * @throws APIException Thrown if API call fails
+     */
+    public function createOrder(
+        $body
+    ) {
+        //check that all required arguments are provided
+        if (!isset($body)) {
+            throw new \InvalidArgumentException("One or more required arguments were NULL.");
+        }
+
+
+        //the base uri for api requests
+        $_queryBuilder = Configuration::getBaseUri();
+        
+        //prepare query string for API call
+        $_queryBuilder = $_queryBuilder.'/orders';
+
+        //validate and preprocess url
+        $_queryUrl = APIHelper::cleanUrl($_queryBuilder);
+
+        //prepare headers
+        $_headers = array (
+            'user-agent'    => 'TangoCardv2NGSDK',
+            'Accept'        => 'application/json',
+            'content-type'  => 'application/json; charset=utf-8'
+        );
+
+        //set HTTP basic auth parameters
+        Request::auth(Configuration::$platformName, Configuration::$platformKey);
+
+        //call on-before Http callback
+        $_httpRequest = new HttpRequest(HttpMethod::POST, $_headers, $_queryUrl);
+        if ($this->getHttpCallBack() != null) {
+            $this->getHttpCallBack()->callOnBeforeRequest($_httpRequest);
+        }
+
+        //and invoke the API call request to fetch the response
+        $response = Request::post($_queryUrl, $_headers, Request\Body::Json($body));
+
+        $_httpResponse = new HttpResponse($response->code, $response->headers, $response->raw_body);
+        $_httpContext = new HttpContext($_httpRequest, $_httpResponse);
+
+        //call on-after Http callback
+        if ($this->getHttpCallBack() != null) {
+            $this->getHttpCallBack()->callOnAfterRequest($_httpContext);
+        }
+
+        //handle errors defined at the API level
+        $this->validateResponse($_httpResponse, $_httpContext);
+
+        $mapper = $this->getJsonMapper();
+
+        return $mapper->mapClass($response->body, 'RaasLib\\Models\\OrderModel');
     }
 
     /**
@@ -109,74 +170,14 @@ class OrdersController extends BaseController
     /**
      * @todo Add general description for this endpoint
      *
-     * @param Models\CreateOrderRequestModel $body TODO: type description here
-     * @return mixed response from the API call
-     * @throws APIException Thrown if API call fails
-     */
-    public function createOrder(
-        $body
-    ) {
-        //check that all required arguments are provided
-        if (!isset($body)) {
-            throw new \InvalidArgumentException("One or more required arguments were NULL.");
-        }
-
-
-        //the base uri for api requests
-        $_queryBuilder = Configuration::getBaseUri();
-        
-        //prepare query string for API call
-        $_queryBuilder = $_queryBuilder.'/orders';
-
-        //validate and preprocess url
-        $_queryUrl = APIHelper::cleanUrl($_queryBuilder);
-
-        //prepare headers
-        $_headers = array (
-            'user-agent'    => 'TangoCardv2NGSDK',
-            'Accept'        => 'application/json',
-            'content-type'  => 'application/json; charset=utf-8'
-        );
-
-        //set HTTP basic auth parameters
-        Request::auth(Configuration::$platformName, Configuration::$platformKey);
-
-        //call on-before Http callback
-        $_httpRequest = new HttpRequest(HttpMethod::POST, $_headers, $_queryUrl);
-        if ($this->getHttpCallBack() != null) {
-            $this->getHttpCallBack()->callOnBeforeRequest($_httpRequest);
-        }
-
-        //and invoke the API call request to fetch the response
-        $response = Request::post($_queryUrl, $_headers, Request\Body::Json($body));
-
-        $_httpResponse = new HttpResponse($response->code, $response->headers, $response->raw_body);
-        $_httpContext = new HttpContext($_httpRequest, $_httpResponse);
-
-        //call on-after Http callback
-        if ($this->getHttpCallBack() != null) {
-            $this->getHttpCallBack()->callOnAfterRequest($_httpContext);
-        }
-
-        //handle errors defined at the API level
-        $this->validateResponse($_httpResponse, $_httpContext);
-
-        $mapper = $this->getJsonMapper();
-
-        return $mapper->mapClass($response->body, 'RaasLib\\Models\\OrderModel');
-    }
-
-    /**
-     * @todo Add general description for this endpoint
-     *
      * @param  array  $options    Array with all options for search
-     * @param string  $options['accountIdentifier']  (optional) TODO: type description here
-     * @param string  $options['customerIdentifier'] (optional) TODO: type description here
-     * @param string  $options['externalRefID']      (optional) TODO: type description here
-     * @param string  $options['startDate']          (optional) TODO: type description here
-     * @param string  $options['endDate']            (optional) TODO: type description here
-     * @param integer $options['elementsPerBlock']   (optional) TODO: type description here
-     * @param integer $options['page']               (optional) TODO: type description here
+     * @param string   $options['accountIdentifier']  (optional) TODO: type description here
+     * @param string   $options['customerIdentifier'] (optional) TODO: type description here
+     * @param string   $options['externalRefID']      (optional) TODO: type description here
+     * @param DateTime $options['startDate']          (optional) TODO: type description here
+     * @param DateTime $options['endDate']            (optional) TODO: type description here
+     * @param integer  $options['elementsPerBlock']   (optional) TODO: type description here
+     * @param integer  $options['page']               (optional) TODO: type description here
      * @return mixed response from the API call
      * @throws APIException Thrown if API call fails
      */

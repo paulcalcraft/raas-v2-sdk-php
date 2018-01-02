@@ -8,6 +8,7 @@
 namespace RaasLib\Models;
 
 use JsonSerializable;
+use RaasLib\Utils\DateTimeHelper;
 
 /**
  * Credit Card
@@ -66,28 +67,30 @@ class CreditCardModel implements JsonSerializable
     /**
      * @todo Write general description for this property
      * @required
-     * @var string $createdDate public property
+     * @factory \Raas\Utils\DateTimeHelper::fromRfc3339DateTime
+     * @var \DateTime $createdDate public property
      */
     public $createdDate;
 
     /**
      * @todo Write general description for this property
      * @required
-     * @var string $activationDate public property
+     * @factory \Raas\Utils\DateTimeHelper::fromRfc3339DateTime
+     * @var \DateTime $activationDate public property
      */
     public $activationDate;
 
     /**
      * Constructor to set initial or default values of member properties
-     * @param string $customerIdentifier Initialization value for $this->customerIdentifier
-     * @param string $accountIdentifier  Initialization value for $this->accountIdentifier
-     * @param string $token              Initialization value for $this->token
-     * @param string $label              Initialization value for $this->label
-     * @param string $lastFourDigits     Initialization value for $this->lastFourDigits
-     * @param string $expirationDate     Initialization value for $this->expirationDate
-     * @param string $status             Initialization value for $this->status
-     * @param string $createdDate        Initialization value for $this->createdDate
-     * @param string $activationDate     Initialization value for $this->activationDate
+     * @param string    $customerIdentifier Initialization value for $this->customerIdentifier
+     * @param string    $accountIdentifier  Initialization value for $this->accountIdentifier
+     * @param string    $token              Initialization value for $this->token
+     * @param string    $label              Initialization value for $this->label
+     * @param string    $lastFourDigits     Initialization value for $this->lastFourDigits
+     * @param string    $expirationDate     Initialization value for $this->expirationDate
+     * @param string    $status             Initialization value for $this->status
+     * @param \DateTime $createdDate        Initialization value for $this->createdDate
+     * @param \DateTime $activationDate     Initialization value for $this->activationDate
      */
     public function __construct()
     {
@@ -118,8 +121,8 @@ class CreditCardModel implements JsonSerializable
         $json['lastFourDigits']     = $this->lastFourDigits;
         $json['expirationDate']     = $this->expirationDate;
         $json['status']             = $this->status;
-        $json['createdDate']        = $this->createdDate;
-        $json['activationDate']     = $this->activationDate;
+        $json['createdDate']        = DateTimeHelper::toRfc3339DateTime($this->createdDate);
+        $json['activationDate']     = DateTimeHelper::toRfc3339DateTime($this->activationDate);
 
         return $json;
     }

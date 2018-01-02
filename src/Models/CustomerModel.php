@@ -8,6 +8,7 @@
 namespace RaasLib\Models;
 
 use JsonSerializable;
+use RaasLib\Utils\DateTimeHelper;
 
 /**
  * Customer Model
@@ -38,24 +39,25 @@ class CustomerModel implements JsonSerializable
     /**
      * Date Created
      * @required
-     * @var string $createdAt public property
+     * @factory \Raas\Utils\DateTimeHelper::fromRfc3339DateTime
+     * @var \DateTime $createdAt public property
      */
     public $createdAt;
 
     /**
      * Accounts
      * @required
-     * @var AccountSummaryModel[] $accounts public property
+     * @var \RaasLib\Models\AccountSummaryModel[] $accounts public property
      */
     public $accounts;
 
     /**
      * Constructor to set initial or default values of member properties
-     * @param string $customerIdentifier Initialization value for $this->customerIdentifier
-     * @param string $displayName        Initialization value for $this->displayName
-     * @param string $status             Initialization value for $this->status
-     * @param string $createdAt          Initialization value for $this->createdAt
-     * @param array  $accounts           Initialization value for $this->accounts
+     * @param string    $customerIdentifier Initialization value for $this->customerIdentifier
+     * @param string    $displayName        Initialization value for $this->displayName
+     * @param string    $status             Initialization value for $this->status
+     * @param \DateTime $createdAt          Initialization value for $this->createdAt
+     * @param array     $accounts           Initialization value for $this->accounts
      */
     public function __construct()
     {
@@ -78,7 +80,7 @@ class CustomerModel implements JsonSerializable
         $json['customerIdentifier'] = $this->customerIdentifier;
         $json['displayName']        = $this->displayName;
         $json['status']             = $this->status;
-        $json['createdAt']          = $this->createdAt;
+        $json['createdAt']          = DateTimeHelper::toRfc3339DateTime($this->createdAt);
         $json['accounts']           = $this->accounts;
 
         return $json;

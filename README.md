@@ -132,158 +132,13 @@ $client = new RaasLib\RaasClient($platformName, $platformKey);
 
 ## <a name="list_of_controllers"></a>List of Controllers
 
+* [OrdersController](#orders_controller)
 * [AccountsController](#accounts_controller)
 * [CatalogController](#catalog_controller)
-* [OrdersController](#orders_controller)
-* [CustomersController](#customers_controller)
 * [ExchangeRatesController](#exchange_rates_controller)
 * [StatusController](#status_controller)
+* [CustomersController](#customers_controller)
 * [FundController](#fund_controller)
-
-## <a name="accounts_controller"></a>![Class: ](https://apidocs.io/img/class.png ".AccountsController") AccountsController
-
-### Get singleton instance
-
-The singleton instance of the ``` AccountsController ``` class can be accessed from the API Client.
-
-```php
-$accounts = $client->getAccounts();
-```
-
-### <a name="get_account"></a>![Method: ](https://apidocs.io/img/method.png ".AccountsController.getAccount") getAccount
-
-> Get an account
-
-
-```php
-function getAccount($accountIdentifier)
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| accountIdentifier |  ``` Required ```  | Account Identifier |
-
-
-
-#### Example Usage
-
-```php
-$accountIdentifier = 'accountIdentifier';
-
-$result = $accounts->getAccount($accountIdentifier);
-
-```
-
-
-### <a name="get_all_accounts"></a>![Method: ](https://apidocs.io/img/method.png ".AccountsController.getAllAccounts") getAllAccounts
-
-> Gets all accounts under the platform
-
-
-```php
-function getAllAccounts()
-```
-
-#### Example Usage
-
-```php
-
-$result = $accounts->getAllAccounts();
-
-```
-
-
-### <a name="create_account"></a>![Method: ](https://apidocs.io/img/method.png ".AccountsController.createAccount") createAccount
-
-> Create an account under a given customer
-
-
-```php
-function createAccount(
-        $customerIdentifier,
-        $body)
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| customerIdentifier |  ``` Required ```  | Customer Identifier |
-| body |  ``` Required ```  | Request Body |
-
-
-
-#### Example Usage
-
-```php
-$customerIdentifier = 'customerIdentifier';
-$body = new CreateAccountRequestModel();
-
-$result = $accounts->createAccount($customerIdentifier, $body);
-
-```
-
-
-### <a name="get_accounts_by_customer"></a>![Method: ](https://apidocs.io/img/method.png ".AccountsController.getAccountsByCustomer") getAccountsByCustomer
-
-> Gets a list of accounts for a given customer
-
-
-```php
-function getAccountsByCustomer($customerIdentifier)
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| customerIdentifier |  ``` Required ```  | Customer Identifier |
-
-
-
-#### Example Usage
-
-```php
-$customerIdentifier = 'customerIdentifier';
-
-$result = $accounts->getAccountsByCustomer($customerIdentifier);
-
-```
-
-
-[Back to List of Controllers](#list_of_controllers)
-
-## <a name="catalog_controller"></a>![Class: ](https://apidocs.io/img/class.png ".CatalogController") CatalogController
-
-### Get singleton instance
-
-The singleton instance of the ``` CatalogController ``` class can be accessed from the API Client.
-
-```php
-$catalog = $client->getCatalog();
-```
-
-### <a name="get_catalog"></a>![Method: ](https://apidocs.io/img/method.png ".CatalogController.getCatalog") getCatalog
-
-> Get Catalog
-
-
-```php
-function getCatalog()
-```
-
-#### Example Usage
-
-```php
-
-$result = $catalog->getCatalog();
-
-```
-
-
-[Back to List of Controllers](#list_of_controllers)
 
 ## <a name="orders_controller"></a>![Class: ](https://apidocs.io/img/class.png ".OrdersController") OrdersController
 
@@ -294,33 +149,6 @@ The singleton instance of the ``` OrdersController ``` class can be accessed fro
 ```php
 $orders = $client->getOrders();
 ```
-
-### <a name="get_order"></a>![Method: ](https://apidocs.io/img/method.png ".OrdersController.getOrder") getOrder
-
-> TODO: Add a method description
-
-
-```php
-function getOrder($referenceOrderID)
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| referenceOrderID |  ``` Required ```  | Reference Order ID |
-
-
-
-#### Example Usage
-
-```php
-$referenceOrderID = 'referenceOrderID';
-
-$result = $orders->getOrder($referenceOrderID);
-
-```
-
 
 ### <a name="create_order"></a>![Method: ](https://apidocs.io/img/method.png ".OrdersController.createOrder") createOrder
 
@@ -345,6 +173,33 @@ function createOrder($body)
 $body = new CreateOrderRequestModel();
 
 $result = $orders->createOrder($body);
+
+```
+
+
+### <a name="get_order"></a>![Method: ](https://apidocs.io/img/method.png ".OrdersController.getOrder") getOrder
+
+> TODO: Add a method description
+
+
+```php
+function getOrder($referenceOrderID)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| referenceOrderID |  ``` Required ```  | Reference Order ID |
+
+
+
+#### Example Usage
+
+```php
+$referenceOrderID = 'referenceOrderID';
+
+$result = $orders->getOrder($referenceOrderID);
 
 ```
 
@@ -390,10 +245,10 @@ $collect['startDate'] = $startDate;
 $endDate = date("D M d, Y G:i");
 $collect['endDate'] = $endDate;
 
-$elementsPerBlock = 137;
+$elementsPerBlock = 114;
 $collect['elementsPerBlock'] = $elementsPerBlock;
 
-$page = 137;
+$page = 114;
 $collect['page'] = $page;
 
 
@@ -425,6 +280,213 @@ function createResendOrder($referenceOrderID)
 $referenceOrderID = 'referenceOrderID';
 
 $result = $orders->createResendOrder($referenceOrderID);
+
+```
+
+
+[Back to List of Controllers](#list_of_controllers)
+
+## <a name="accounts_controller"></a>![Class: ](https://apidocs.io/img/class.png ".AccountsController") AccountsController
+
+### Get singleton instance
+
+The singleton instance of the ``` AccountsController ``` class can be accessed from the API Client.
+
+```php
+$accounts = $client->getAccounts();
+```
+
+### <a name="get_account"></a>![Method: ](https://apidocs.io/img/method.png ".AccountsController.getAccount") getAccount
+
+> Get an account
+
+
+```php
+function getAccount($accountIdentifier)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| accountIdentifier |  ``` Required ```  | Account Identifier |
+
+
+
+#### Example Usage
+
+```php
+$accountIdentifier = 'accountIdentifier';
+
+$result = $accounts->getAccount($accountIdentifier);
+
+```
+
+
+### <a name="get_accounts_by_customer"></a>![Method: ](https://apidocs.io/img/method.png ".AccountsController.getAccountsByCustomer") getAccountsByCustomer
+
+> Gets a list of accounts for a given customer
+
+
+```php
+function getAccountsByCustomer($customerIdentifier)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| customerIdentifier |  ``` Required ```  | Customer Identifier |
+
+
+
+#### Example Usage
+
+```php
+$customerIdentifier = 'customerIdentifier';
+
+$result = $accounts->getAccountsByCustomer($customerIdentifier);
+
+```
+
+
+### <a name="create_account"></a>![Method: ](https://apidocs.io/img/method.png ".AccountsController.createAccount") createAccount
+
+> Create an account under a given customer
+
+
+```php
+function createAccount(
+        $customerIdentifier,
+        $body)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| customerIdentifier |  ``` Required ```  | Customer Identifier |
+| body |  ``` Required ```  | Request Body |
+
+
+
+#### Example Usage
+
+```php
+$customerIdentifier = 'customerIdentifier';
+$body = new CreateAccountRequestModel();
+
+$result = $accounts->createAccount($customerIdentifier, $body);
+
+```
+
+
+### <a name="get_all_accounts"></a>![Method: ](https://apidocs.io/img/method.png ".AccountsController.getAllAccounts") getAllAccounts
+
+> Gets all accounts under the platform
+
+
+```php
+function getAllAccounts()
+```
+
+#### Example Usage
+
+```php
+
+$result = $accounts->getAllAccounts();
+
+```
+
+
+[Back to List of Controllers](#list_of_controllers)
+
+## <a name="catalog_controller"></a>![Class: ](https://apidocs.io/img/class.png ".CatalogController") CatalogController
+
+### Get singleton instance
+
+The singleton instance of the ``` CatalogController ``` class can be accessed from the API Client.
+
+```php
+$catalog = $client->getCatalog();
+```
+
+### <a name="get_catalog"></a>![Method: ](https://apidocs.io/img/method.png ".CatalogController.getCatalog") getCatalog
+
+> Get Catalog
+
+
+```php
+function getCatalog()
+```
+
+#### Example Usage
+
+```php
+
+$result = $catalog->getCatalog();
+
+```
+
+
+[Back to List of Controllers](#list_of_controllers)
+
+## <a name="exchange_rates_controller"></a>![Class: ](https://apidocs.io/img/class.png ".ExchangeRatesController") ExchangeRatesController
+
+### Get singleton instance
+
+The singleton instance of the ``` ExchangeRatesController ``` class can be accessed from the API Client.
+
+```php
+$exchangeRates = $client->getExchangeRates();
+```
+
+### <a name="get_exchange_rates"></a>![Method: ](https://apidocs.io/img/method.png ".ExchangeRatesController.getExchangeRates") getExchangeRates
+
+> Retrieve current exchange rates
+
+
+```php
+function getExchangeRates()
+```
+
+#### Example Usage
+
+```php
+
+$result = $exchangeRates->getExchangeRates();
+
+```
+
+
+[Back to List of Controllers](#list_of_controllers)
+
+## <a name="status_controller"></a>![Class: ](https://apidocs.io/img/class.png ".StatusController") StatusController
+
+### Get singleton instance
+
+The singleton instance of the ``` StatusController ``` class can be accessed from the API Client.
+
+```php
+$status = $client->getStatus();
+```
+
+### <a name="get_system_status"></a>![Method: ](https://apidocs.io/img/method.png ".StatusController.getSystemStatus") getSystemStatus
+
+> *Tags:*  ``` Skips Authentication ``` 
+
+> Retrieve system status
+
+
+```php
+function getSystemStatus()
+```
+
+#### Example Usage
+
+```php
+
+$result = $status->getSystemStatus();
 
 ```
 
@@ -509,68 +571,6 @@ function getAllCustomers()
 ```php
 
 $result = $customers->getAllCustomers();
-
-```
-
-
-[Back to List of Controllers](#list_of_controllers)
-
-## <a name="exchange_rates_controller"></a>![Class: ](https://apidocs.io/img/class.png ".ExchangeRatesController") ExchangeRatesController
-
-### Get singleton instance
-
-The singleton instance of the ``` ExchangeRatesController ``` class can be accessed from the API Client.
-
-```php
-$exchangeRates = $client->getExchangeRates();
-```
-
-### <a name="get_exchange_rates"></a>![Method: ](https://apidocs.io/img/method.png ".ExchangeRatesController.getExchangeRates") getExchangeRates
-
-> Retrieve current exchange rates
-
-
-```php
-function getExchangeRates()
-```
-
-#### Example Usage
-
-```php
-
-$result = $exchangeRates->getExchangeRates();
-
-```
-
-
-[Back to List of Controllers](#list_of_controllers)
-
-## <a name="status_controller"></a>![Class: ](https://apidocs.io/img/class.png ".StatusController") StatusController
-
-### Get singleton instance
-
-The singleton instance of the ``` StatusController ``` class can be accessed from the API Client.
-
-```php
-$status = $client->getStatus();
-```
-
-### <a name="get_system_status"></a>![Method: ](https://apidocs.io/img/method.png ".StatusController.getSystemStatus") getSystemStatus
-
-> *Tags:*  ``` Skips Authentication ``` 
-
-> Retrieve system status
-
-
-```php
-function getSystemStatus()
-```
-
-#### Example Usage
-
-```php
-
-$result = $status->getSystemStatus();
 
 ```
 

@@ -18,7 +18,7 @@ class RaasGenericException extends APIException
     /**
      * Request timestamp
      * @required
-     * @var string $timestamp public property
+     * @var DateTime $timestamp public property
      */
     public $timestamp;
 

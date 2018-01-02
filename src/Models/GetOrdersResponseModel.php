@@ -17,14 +17,14 @@ class GetOrdersResponseModel implements JsonSerializable
     /**
      * Pagination information
      * @required
-     * @var PageModel $page public property
+     * @var \RaasLib\Models\PageModel $page public property
      */
     public $page;
 
     /**
      * An array of orders
      * @required
-     * @var OrderModel[] $orders public property
+     * @var \RaasLib\Models\OrderModel[] $orders public property
      */
     public $orders;
 

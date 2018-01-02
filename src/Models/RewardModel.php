@@ -24,7 +24,7 @@ class RewardModel implements JsonSerializable
     /**
      * An array of reward credentials
      * @required
-     * @var RewardCredentialModel[] $credentialList public property
+     * @var \RaasLib\Models\RewardCredentialModel[] $credentialList public property
      */
     public $credentialList;
 

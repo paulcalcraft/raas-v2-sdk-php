@@ -8,6 +8,7 @@
 namespace RaasLib\Models;
 
 use JsonSerializable;
+use RaasLib\Utils\DateTimeHelper;
 
 /**
  * Account Summary Model
@@ -31,7 +32,8 @@ class AccountSummaryModel implements JsonSerializable
     /**
      * Date Created
      * @required
-     * @var string $createdAt public property
+     * @factory \Raas\Utils\DateTimeHelper::fromRfc3339DateTime
+     * @var \DateTime $createdAt public property
      */
     public $createdAt;
 
@@ -44,10 +46,10 @@ class AccountSummaryModel implements JsonSerializable
 
     /**
      * Constructor to set initial or default values of member properties
-     * @param string $accountIdentifier Initialization value for $this->accountIdentifier
-     * @param string $displayName       Initialization value for $this->displayName
-     * @param string $createdAt         Initialization value for $this->createdAt
-     * @param string $status            Initialization value for $this->status
+     * @param string    $accountIdentifier Initialization value for $this->accountIdentifier
+     * @param string    $displayName       Initialization value for $this->displayName
+     * @param \DateTime $createdAt         Initialization value for $this->createdAt
+     * @param string    $status            Initialization value for $this->status
      */
     public function __construct()
     {
@@ -68,7 +70,7 @@ class AccountSummaryModel implements JsonSerializable
         $json = array();
         $json['accountIdentifier'] = $this->accountIdentifier;
         $json['displayName']       = $this->displayName;
-        $json['createdAt']         = $this->createdAt;
+        $json['createdAt']         = DateTimeHelper::toRfc3339DateTime($this->createdAt);
         $json['status']            = $this->status;
 
         return $json;

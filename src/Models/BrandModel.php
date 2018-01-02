@@ -8,6 +8,7 @@
 namespace RaasLib\Models;
 
 use JsonSerializable;
+use RaasLib\Utils\DateTimeHelper;
 
 /**
  * Brand Model
@@ -59,14 +60,16 @@ class BrandModel implements JsonSerializable
     /**
      * Date Created
      * @required
-     * @var string $createdDate public property
+     * @factory \Raas\Utils\DateTimeHelper::fromRfc3339DateTime
+     * @var \DateTime $createdDate public property
      */
     public $createdDate;
 
     /**
      * Last Updated
      * @required
-     * @var string $lastUpdateDate public property
+     * @factory \Raas\Utils\DateTimeHelper::fromRfc3339DateTime
+     * @var \DateTime $lastUpdateDate public property
      */
     public $lastUpdateDate;
 
@@ -87,23 +90,23 @@ class BrandModel implements JsonSerializable
     /**
      * Items
      * @required
-     * @var ItemModel[] $items public property
+     * @var \RaasLib\Models\ItemModel[] $items public property
      */
     public $items;
 
     /**
      * Constructor to set initial or default values of member properties
-     * @param string $brandKey         Initialization value for $this->brandKey
-     * @param string $brandName        Initialization value for $this->brandName
-     * @param string $disclaimer       Initialization value for $this->disclaimer
-     * @param string $description      Initialization value for $this->description
-     * @param string $shortDescription Initialization value for $this->shortDescription
-     * @param string $terms            Initialization value for $this->terms
-     * @param string $createdDate      Initialization value for $this->createdDate
-     * @param string $lastUpdateDate   Initialization value for $this->lastUpdateDate
-     * @param array  $imageUrls        Initialization value for $this->imageUrls
-     * @param string $status           Initialization value for $this->status
-     * @param array  $items            Initialization value for $this->items
+     * @param string    $brandKey         Initialization value for $this->brandKey
+     * @param string    $brandName        Initialization value for $this->brandName
+     * @param string    $disclaimer       Initialization value for $this->disclaimer
+     * @param string    $description      Initialization value for $this->description
+     * @param string    $shortDescription Initialization value for $this->shortDescription
+     * @param string    $terms            Initialization value for $this->terms
+     * @param \DateTime $createdDate      Initialization value for $this->createdDate
+     * @param \DateTime $lastUpdateDate   Initialization value for $this->lastUpdateDate
+     * @param array     $imageUrls        Initialization value for $this->imageUrls
+     * @param string    $status           Initialization value for $this->status
+     * @param array     $items            Initialization value for $this->items
      */
     public function __construct()
     {
@@ -135,8 +138,8 @@ class BrandModel implements JsonSerializable
         $json['description']      = $this->description;
         $json['shortDescription'] = $this->shortDescription;
         $json['terms']            = $this->terms;
-        $json['createdDate']      = $this->createdDate;
-        $json['lastUpdateDate']   = $this->lastUpdateDate;
+        $json['createdDate']      = DateTimeHelper::toRfc3339DateTime($this->createdDate);
+        $json['lastUpdateDate']   = DateTimeHelper::toRfc3339DateTime($this->lastUpdateDate);
         $json['imageUrls']        = $this->imageUrls;
         $json['status']           = $this->status;
         $json['items']            = $this->items;

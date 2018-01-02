@@ -107,27 +107,39 @@ class AccountsController extends BaseController
     }
 
     /**
-     * Gets all accounts under the platform
+     * Gets a list of accounts for a given customer
      *
+     * @param string $customerIdentifier Customer Identifier
      * @return mixed response from the API call
      * @throws APIException Thrown if API call fails
      */
-    public function getAllAccounts()
-    {
+    public function getAccountsByCustomer(
+        $customerIdentifier
+    ) {
+        //check that all required arguments are provided
+        if (!isset($customerIdentifier)) {
+            throw new \InvalidArgumentException("One or more required arguments were NULL.");
+        }
+
 
         //the base uri for api requests
         $_queryBuilder = Configuration::getBaseUri();
         
         //prepare query string for API call
-        $_queryBuilder = $_queryBuilder.'/accounts';
+        $_queryBuilder = $_queryBuilder.'/customers/{customerIdentifier}/accounts';
+
+        //process optional query parameters
+        $_queryBuilder = APIHelper::appendUrlWithTemplateParameters($_queryBuilder, array (
+            'customerIdentifier' => $customerIdentifier,
+            ));
 
         //validate and preprocess url
         $_queryUrl = APIHelper::cleanUrl($_queryBuilder);
 
         //prepare headers
         $_headers = array (
-            'user-agent'    => 'TangoCardv2NGSDK',
-            'Accept'        => 'application/json'
+            'user-agent'       => 'TangoCardv2NGSDK',
+            'Accept'           => 'application/json'
         );
 
         //set HTTP basic auth parameters
@@ -155,7 +167,7 @@ class AccountsController extends BaseController
 
         $mapper = $this->getJsonMapper();
 
-        return $mapper->mapClassArray($response->body, 'RaasLib\\Models\\AccountModel');
+        return $mapper->mapClassArray($response->body, 'RaasLib\\Models\\AccountSummaryModel');
     }
 
     /**
@@ -226,39 +238,27 @@ class AccountsController extends BaseController
     }
 
     /**
-     * Gets a list of accounts for a given customer
+     * Gets all accounts under the platform
      *
-     * @param string $customerIdentifier Customer Identifier
      * @return mixed response from the API call
      * @throws APIException Thrown if API call fails
      */
-    public function getAccountsByCustomer(
-        $customerIdentifier
-    ) {
-        //check that all required arguments are provided
-        if (!isset($customerIdentifier)) {
-            throw new \InvalidArgumentException("One or more required arguments were NULL.");
-        }
-
+    public function getAllAccounts()
+    {
 
         //the base uri for api requests
         $_queryBuilder = Configuration::getBaseUri();
         
         //prepare query string for API call
-        $_queryBuilder = $_queryBuilder.'/customers/{customerIdentifier}/accounts';
-
-        //process optional query parameters
-        $_queryBuilder = APIHelper::appendUrlWithTemplateParameters($_queryBuilder, array (
-            'customerIdentifier' => $customerIdentifier,
-            ));
+        $_queryBuilder = $_queryBuilder.'/accounts';
 
         //validate and preprocess url
         $_queryUrl = APIHelper::cleanUrl($_queryBuilder);
 
         //prepare headers
         $_headers = array (
-            'user-agent'       => 'TangoCardv2NGSDK',
-            'Accept'           => 'application/json'
+            'user-agent'    => 'TangoCardv2NGSDK',
+            'Accept'        => 'application/json'
         );
 
         //set HTTP basic auth parameters
@@ -286,6 +286,6 @@ class AccountsController extends BaseController
 
         $mapper = $this->getJsonMapper();
 
-        return $mapper->mapClassArray($response->body, 'RaasLib\\Models\\AccountSummaryModel');
+        return $mapper->mapClassArray($response->body, 'RaasLib\\Models\\AccountModel');
     }
 }

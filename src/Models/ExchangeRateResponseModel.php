@@ -24,7 +24,7 @@ class ExchangeRateResponseModel implements JsonSerializable
     /**
      * Exchange Rates
      * @required
-     * @var ExchangeRateModel[] $exchangeRates public property
+     * @var \RaasLib\Models\ExchangeRateModel[] $exchangeRates public property
      */
     public $exchangeRates;
 
