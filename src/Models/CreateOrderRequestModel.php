@@ -132,7 +132,7 @@ class CreateOrderRequestModel implements JsonSerializable
     {
         $json = array();
         $json['accountIdentifier']  = $this->accountIdentifier;
-        $json['amount']             = $this->amount;
+        $json['amount']             = number_format($this->amount,2);
         $json['customerIdentifier'] = $this->customerIdentifier;
         $json['sendEmail']          = $this->sendEmail;
         $json['utid']               = $this->utid;
